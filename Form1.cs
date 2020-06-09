@@ -46,7 +46,7 @@ namespace RecipeManager
       foreach (RecipeListViewItem recipeListViewItem in listView1.SelectedItems)
       {
         m_recipes.Remove(recipeListViewItem.Recipe);
-        File.Delete(@"e:\portkata\" + recipeListViewItem.Recipe.Name);
+        File.Delete(Path.Combine(Directory.GetCurrentDirectory(), recipeListViewItem.Recipe.Name));
       }
       PopulateList();
 
@@ -61,7 +61,7 @@ namespace RecipeManager
 
     private void SaveClick(object sender, EventArgs e)
     {
-      File.WriteAllText(Path.Combine("e:\\portkata", textBoxName.Text), textBoxObjectData.Text);
+      File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), textBoxName.Text), textBoxObjectData.Text);
       LoadRecipes();
     }
 
